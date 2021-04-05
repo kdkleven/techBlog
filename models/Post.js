@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Post extends Model {}
 
-Project.init(
+Post.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,7 +11,7 @@ Project.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -22,10 +22,6 @@ Project.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -40,8 +36,8 @@ Project.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'post',
   }
 );
 
-module.exports = Project;
+module.exports = Post;
