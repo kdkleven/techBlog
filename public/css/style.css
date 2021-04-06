@@ -1,19 +1,30 @@
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+.navbar {
+  color: black !important;
 }
 
-.navbar {
+.card {
+  padding: 5px;
+  margin: 10px;
   color: white !important;
+  background-color: #dc3545;
 }
 
 body {
   cursor: pointer;
-  color:black;
+  color:black !important;
   text-decoration: none;
+  background-color: white;
 }
 
 a:hover {
-  color: green;
+  color: black;
+  font-weight: bold;
   text-decoration: none;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
 
