@@ -1,10 +1,39 @@
-{{#each post}}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
     <p class="card-description">{{description}}</p>
     <p class="card-author">Created by {{user.name}} on {{format_date date_created}}</p>
-    <a href="#" class="btn btn-primary">Add comment</a>
   </div>
 </div>
-{{/each}}
+
+<div class="container" style="width: 50%">
+
+  {{#each comments as |comment|}}
+    <div class="row">
+      <div class="card">
+        <p>{{comment.content}}</p>
+        <p>-{{comment.user.name}}, {{format_date comment.createdAt}}</p>
+      </div>
+    </div>
+    <br>
+  {{/each}}
+</div>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-center row">
+    <div class="col-md-8">
+      <div class="d-flex flex-column comment-section">
+        <div class="p-2">
+          <div class="d-flex flex-row align-items-start">
+            <textarea class="form-control ml-1 shadow-none textarea" id="comment-content" data-id={{id}}></textarea>
+          </div>
+          <div class="mt-2 text-right">
+            <button class="btn btn-danger btn-sm shadow-none" id="commentBtn" type="button">Post comment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/comment.js"></script>

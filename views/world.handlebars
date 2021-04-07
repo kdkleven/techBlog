@@ -2,7 +2,7 @@
 {{#each posts as |post| }}
 <div class="card">
   <div class="card-body">
-    <a href="#"><h5 class="card-title">{{title}}</h5></a>
+    <a href="/post/{{post.id}}"><h5 class="card-title">{{title}}</h5></a>
     <p class="card-description">{{description}}</p>
     <p class="card-author">Created by {{user.name}} on {{format_date date_created}}</p>
   </div>

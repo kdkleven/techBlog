@@ -1,28 +1,27 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#post-name').value.trim();
-  const needed_funding = document.querySelector('#post-funding').value.trim();
-  const description = document.querySelector('#post-desc').value.trim();
+  const title = document.querySelector('#post-title').value.trim();
+  const description = document.querySelector('#post-description').value.trim();
 
   if (name && needed_funding && description) {
     const response = await fetch(`/api/posts`, {
       method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
+      body: JSON.stringify({ title, description }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/self');
     } else {
       alert('Failed to create post');
     }
   }
 };
 
-const delButtonHandler = async (event) => {
+const deleteButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
@@ -31,7 +30,7 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/self');
     } else {
       alert('Failed to delete post');
     }
@@ -44,4 +43,4 @@ document
 
 document
   .querySelector('.post-list')
-  .addEventListener('click', delButtonHandler);
+  .addEventListener('click', deleteButtonHandler);
