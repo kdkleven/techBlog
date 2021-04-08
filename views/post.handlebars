@@ -6,21 +6,18 @@
   </div>
 </div>
 
-<div class="container" style="width: 50%">
-
-  {{#each comments as |comment|}}
-    <div class="row">
-      <div class="card">
-        <p>{{comment.content}}</p>
-        <p>-{{comment.user.name}}, {{format_date comment.createdAt}}</p>
-      </div>
-    </div>
-    <br>
-  {{/each}}
+{{#each comments as |comment|}}
+<div class="row">
+  <div class="card">
+    <p>{{comment.content}}</p>
+    <p>-{{comment.user.name}}, {{format_date comment.createdAt}}</p>
+  </div>
 </div>
+<br>
+{{/each}}
 
 <div class="container mt-5">
-  <div class="d-flex justify-content-center row">
+  <div class="d-flex row">
     <div class="col-md-8">
       <div class="d-flex flex-column comment-section">
         <div class="p-2">
