@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Hello, {{name}}!</h2>
+  </div>
+</div>
+
+
+<div>
+  <button>Create Post</button>
+
+  {{!-- {{> createPost }} --}}
+</div>
+
+{{#if posts.length}}
+  <div class="col-md-12 post-list">
+    <h3>My Posts:</h3>
+
+    <!-- Loop over each object in the posts array -->
+    {{#each posts as |post| }}
+      <div class="card cardLink">
+        <div class="card-body">
+          <a href="/post/{{post.id}}">
+            <h5 class="card-title">{{title}}</h5>
+          </a>
+          {{!-- Split into partial? --}}
+          <p class="card-description">{{description}}</p>
+          <p class="card-author">Created by {{name}} on {{format_date date_created}}</p>
+          <div class="col-md-4">
+          <button class="btn btn-sm btn-danger" data-id="{{post.id}}">Delete</button>
+        </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/if}}
+</div>
+
+<script src="./js/self.js"></script>

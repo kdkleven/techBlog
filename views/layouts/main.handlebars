@@ -26,12 +26,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" id="world" aria-current="page" href="/">World</a>
+              <a class="nav-link" id="home" aria-current="page" href="/">Home</a>
               {{#if logged_in}}
-                <a class="nav-link" id="self" href="/self">Self</a>
-                <a class="nav-link" id="leave" href="/leave">Leave</a>
+                <a class="nav-link" id="myPosts" href="/myPosts">My Posts</a>
+                <a class="nav-link" id="logout">Logout</a>
               {{else}}
-                <a class="nav-link" id="enter" href="/enter">Enter</a>
+                <a class="nav-link" id="login" href="/login">Login</a>
               {{/if}}
             </div>
           </div>
@@ -44,22 +44,22 @@
       {{{ body }}}
     </main>
 
-    <footer class="text-center text-white" style="background-color: #f1f1f1;">
+    <footer class="footer">
       <!-- Copyright -->
-      <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        2021:
-        <span class="text-dark">Kyle Kleven</span>
-        <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="http://linkedin.com/in/kdkleven"
-          data-mdb-ripple-color="dark"><i class="fab fa-linkedin">LinkedIn</i></a>
+      <div class="text-center text-dark" style="background-color: rgba(0, 0, 0, 0.2);">
+        2021 : 
+        <span class="text-dark">Kyle Kleven</span> |
+        <a class="btn btn-link btn-floating btn-sm text-dark" style="float-left" href="http://linkedin.com/in/kdkleven"
+          data-mdb-ripple-color="dark"><i class="fab fa-linkedin">LinkedIn</i></a> |
         <!-- Github -->
-        <a class="btn btn-link btn-floating btn-sm text-dark m-1" href="http://github.com/kdkleven"
+        <a class="text-right  btn btn-link btn-floating btn-sm text-dark"  style="float-left" href="http://github.com/kdkleven"
           data-mdb-ripple-color="dark"><i class="fab fa-github">GitHub</i></a>
       </div>
     </footer>
 
       <!-- Render script for logged in users only -->
       {{#if logged_in}}
-        <script src="/js/leave.js"></script>
+        <script src="/js/logout.js"></script>
       {{/if}}
   </body>
 

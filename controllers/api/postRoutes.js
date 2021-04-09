@@ -65,16 +65,18 @@ router.put('/:id', async (req, res) => {
 });
 
 //POST create a comment
-router.post("/comment", async (req, res) => {
+router.post("/:id/comment", async (req, res) => {
   try {
     console.log("Post route try");
+    console.log(req.body.content);
+    console.log(req.body.post_id);
+    
       const newComment = await Comment.create({
           content: req.body.content,
-          post_id: req.body.post_id
-          //user_id: req.session.user_id
+          post_id: req.body.post_id,
+          user_id: req.session.user_id
       });
       res.status(200).json(newComment);
-      res.render('post');
   } catch (err) {
       res.status(400).json(err);
   }

@@ -1,4 +1,4 @@
-const enterFormHandler = async (event) => {
+const loginFormHandler = async (event) => {
   event.preventDefault();
 
   // Collect values from the login form
@@ -7,7 +7,7 @@ const enterFormHandler = async (event) => {
 
   if (email && password) {
     // Send a POST request to the API endpoint
-    const response = await fetch('/api/users/enter', {
+    const response = await fetch('/api/users/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
@@ -15,7 +15,7 @@ const enterFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the dashboard page
-      document.location.replace('/self');
+      document.location.replace('/myPosts');
     } else {
       alert(response.statusText);
     }
@@ -37,7 +37,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/self');
+      document.location.replace('/myPosts');
     } else {
       alert(response.statusText);
     }
@@ -45,8 +45,8 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.enter-form')
-  .addEventListener('submit', enterFormHandler);
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
 
 document
   .querySelector('.signup-form')

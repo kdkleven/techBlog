@@ -1,14 +1,17 @@
 //function to create new comment
 const newCommentHandler = async function (event) {
     event.preventDefault();
+
   console.log("newcommentHandler!!!!");
     //variables
-    const content = document.querySelector('#comment-content').value.trim();
-    const post_id = document.querySelector('#comment-content').getAttribute("data-id");
-  
+    const content = await document.querySelector('#comment-content').value.trim();
+    console.log(content);
+    const post_id = await document.querySelector('#comment-content').getAttribute("data-id");
+    console.log(post_id);
+
     if (content) {
       //fetch
-      const response = await fetch('/api/posts/comment/', {
+      const response = await fetch('/api/post/'+post_id+'/comment', {
         method: 'POST',
         body: JSON.stringify({ content: content, post_id: post_id }),
         headers: {
@@ -19,7 +22,7 @@ const newCommentHandler = async function (event) {
   
       if (response.ok) {
       
-        document.location.replace('/api/post/'+post_id);
+        document.location.replace(`/api/post/${post_id}`);
       } else {
         alert('Failed to create a new comment');
       }

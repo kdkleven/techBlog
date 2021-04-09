@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
   const description = document.querySelector('#post-description').value.trim();
 
   if (name && needed_funding && description) {
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch('/api/post', {
       method: 'POST',
       body: JSON.stringify({ title, description }),
       headers: {
@@ -14,7 +14,7 @@ const newFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/self');
+      document.location.replace('/myPosts');
     } else {
       alert('Failed to create post');
     }
@@ -25,12 +25,12 @@ const deleteButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
-      document.location.replace('/self');
+      document.location.replace('/myPosts');
     } else {
       alert('Failed to delete post');
     }

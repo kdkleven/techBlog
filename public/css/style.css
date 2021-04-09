@@ -7,6 +7,7 @@
   margin: 10px;
   color: white !important;
   background-color: #dc3545;
+  width: 75%;
 }
 
 body {
@@ -14,17 +15,23 @@ body {
   color:black !important;
   text-decoration: none;
   background-color: white;
+  cursor: pointer;
 }
 
 a:hover {
-  color: black;
-  font-weight: bold;
   text-decoration: none;
+  color: white;
 }
 
 a {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
+}
+
+
+.cardLink:hover {
+  background-color: rgba(0, 0, 0, 0.733);
+  
 }
 
 footer {
