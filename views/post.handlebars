@@ -1,20 +1,9 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
-    <p class="card-description">{{description}}<span class="card-author" style="float: right">Created by {{name}} on {{format_date date_created}}</span></p>
+    <p class="card-description">{{description}}<span class="card-author" style="float: right">Created by {{name}} on {{format_date createdAt}}</span></p>
   </div>
 </div>
-
-  <div>comments go below!!!</div>
-
-  {{#each comments as |comment| }}
-    <div class="row">
-      <div class="card">
-        <p>{{comment.content}}</p>
-        <p>-{{comment.user.name}}, {{format_date comment.createdAt}}</p>
-      </div>
-    </div>
-  {{/each}}
 
 {{#if logged_in}}
 <div class="container mt-5">
@@ -23,7 +12,7 @@
       <div class="d-flex flex-column comment-section">
         <div class="p-2">
           <div class="d-flex flex-row align-items-start">
-            <textarea class="form-control ml-1 shadow-none textarea" id="comment-content" data-id={{id}}></textarea>
+            <textarea class="form-control textarea" id="comment-content" data-id={{id}}></textarea>
           </div>
           <div class="mt-2 text-right">
             <button class="btn btn-danger btn-sm shadow-none" id="commentBtn" type="button">Post comment</button>
@@ -34,4 +23,12 @@
   </div>
 </div>
 {{/if}}
+
+  <div class="container">
+    comments go below!!!
+
+  {{#each comments}}
+    {{> commentDisplay}}
+  {{/each}}
+</div>
 <script src="/js/comment.js"></script>

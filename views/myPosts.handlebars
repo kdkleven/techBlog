@@ -20,11 +20,9 @@
           </a>
           {{!-- Split into partial? --}}
           <p class="card-description">{{description}}</p>
-          <p class="card-author">Created by {{name}} on {{format_date date_created}}</p>
+          <p class="card-author">Created by {{name}} on {{format_date createdAt}}</p>
           <div class="col-md-4">
-            <button class="btn btn-sm btn-dark" data-id="{{post.id}}">Update</button>
-        <span>
-          <button class="btn btn-sm btn-dark" data-id="{{post.id}}">Delete</button></span>
+            <button class="btn btn-sm btn-dark" data-id="{{post.id}}">Edit</button>
         </div>
         </div>
       </div>

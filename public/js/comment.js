@@ -11,7 +11,7 @@ const newCommentHandler = async function (event) {
 
     if (content) {
       //fetch
-      const response = await fetch('/api/post/comment', {
+      const response = await fetch('/api/post/' + post_id + '/comment', {
         method: 'POST',
         body: JSON.stringify({ content: content, post_id: post_id }),
         headers: {
@@ -22,7 +22,7 @@ const newCommentHandler = async function (event) {
   
       if (response.ok) {
       
-        document.location.replace(`/api/post/${post_id}`);
+        document.location.reload();
       } else {
         alert('Failed to create a new comment');
       }

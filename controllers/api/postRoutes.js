@@ -65,7 +65,7 @@ router.put('/:id', async (req, res) => {
 });
 
 //POST create a comment
-router.post("/comment/", async (req, res) => {
+router.post('/:id/comment', async (req, res) => {
   try {
     console.log("Post route try");
     console.log(req.body.content);
