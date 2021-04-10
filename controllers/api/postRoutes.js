@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, Comment } = require('../../models');
+const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //POST create post
@@ -17,10 +17,42 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 //Display individual post
-router.get('/:id', (req, res) => {
-  res.render('post', {
+// router.get('/:id', (req, res) => {
+//   res.render('post', {
+//       loggedIn: req.session.logged_in
+//   });
+// });
+
+//get post by ID
+router.get('/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+          {
+              model: User,
+              attributes: ['name'],
+          },
+
+          {
+              model: Comment,
+              attributes: ['content', 'createdAt', 'user_id'],
+              include: {
+                  model: User, 
+                  attributes: ['name', 'id'],
+              }
+          },
+      ],
+    });
+
+    const posts = postData.get({ plain: true });
+
+    res.render('post', {
+      ...posts,
       loggedIn: req.session.logged_in
-  });
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 //DELETE post
