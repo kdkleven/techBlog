@@ -3,7 +3,7 @@ const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //POST create post
-router.post('/', withAuth, async (req, res) => {
+router.post('/create', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
@@ -16,12 +16,31 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//Display individual post
-// router.get('/:id', (req, res) => {
-//   res.render('post', {
-//       loggedIn: req.session.logged_in
-//   });
-// });
+//CREATE new post
+router.post('/create', async (req, res) => {
+  console.log("I'M HERE TO CREATE A POST");
+  try {
+      const newPost = await Post.create(
+          {
+          title: req.body.title,
+          content: req.body.content,
+          user_id: req.session.user_id
+      }
+      );
+      console.log(newPost);
+      res.status(200).json(newPost);
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
+
+
+//Render create post page
+router.get('/create', (req, res) => {
+  res.render('createPost', {
+      loggedIn: req.session.logged_in
+  });
+});
 
 //get post by ID
 router.get('/:id', async (req, res) => {
@@ -30,7 +49,7 @@ router.get('/:id', async (req, res) => {
       include: [
           {
               model: User,
-              attributes: ['name'],
+              attributes: ['name', 'id'],
           },
 
           {

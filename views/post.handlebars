@@ -22,11 +22,13 @@
     </div>
   </div>
 </div>
+{{else}}
+<div class="alert alert-danger" role="alert">
+  Login to leave a comment.
+</div>
 {{/if}}
 
-  <div class="container">
-    comments go below!!!
-
+<h5>Comments:</h5>
   {{#each comments}}
     {{> commentDisplay}}
   {{/each}}

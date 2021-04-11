@@ -22,7 +22,7 @@ const newCommentHandler = async function (event) {
   
       if (response.ok) {
       
-        document.location.reload();
+        document.location.replace(`/api/post/${post_id}`);
       } else {
         alert('Failed to create a new comment');
       }

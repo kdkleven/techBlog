@@ -1,18 +1,16 @@
 <div class="row mt-4">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <h3>Create Post:</h3>
 
     <form class="form new-post-form">
       <div class="form-group">
-        <label for="post-title">title:</label>
-        <input class="form-input" type="text" id="post-title" name="post-title"/>
+        <input class="form-control" type="text" id="post-title" name="post-title" placeholder="Title"/>
       </div>
       <div class="form-group">
-        <label for="post-desc">description:</label>
-        <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+        <textarea class="form-control" id="post-desc" name="post-desc" placeholder="Enter comment here..."></textarea>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Post</button>
+        <button type="submit" class="btn btn-danger" id="createPost">Post</button>
       </div>
     </form>
   </div>

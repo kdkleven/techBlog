@@ -1,14 +1,6 @@
-
-{{!-- link to take user to update delete --}}
-{{!-- <a href="/dashboard/getpost/{{id}}" class="upDelLink" style="width: 50%"> --}}
-{{!-- dashboard info --}}
-  {{!-- <div class="card postCard">
-        <div class="card-body">
-            <h3 style="weight: bold">{{title}}</h3>
-            <h5>{{content}}</h5>
-            <p>Created at {{format_date createdAt}}</p>
-            
-        </div>
-    </div> --}}
-
-
+<div class="card postCard">
+    <div class="card-body">
+        <p>{{user.name}} on {{format_date createdAt}}</p>
+        <p>"{{content}}"</p>
+    </div>
+</div>
