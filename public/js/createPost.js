@@ -4,14 +4,14 @@ const newPostHandler = async (event) => {
   
     // variables
     const title = document.querySelector('#post-title').value.trim();
+    const description = document.querySelector('#post-desc').value.trim();
   
-    const content = document.querySelector('#post-desc').value.trim();
-  
+    console.log(title);
   // fetch
       const response = await fetch(`/api/post/create`, {
         method: 'POST',
         body: JSON.stringify({
-          title, content
+          title, description
         }),
         headers: { 'Content-Type': 'application/json' },
       });

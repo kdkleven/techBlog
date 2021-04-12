@@ -3,7 +3,7 @@ const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //POST create post
-router.post('/create', withAuth, async (req, res) => {
+router.get('/create', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
@@ -17,16 +17,17 @@ router.post('/create', withAuth, async (req, res) => {
 });
 
 //CREATE new post
-router.post('/create', async (req, res) => {
+router.post('/create', withAuth, async (req, res) => {
   console.log("I'M HERE TO CREATE A POST");
   try {
       const newPost = await Post.create(
           {
           title: req.body.title,
-          content: req.body.content,
+          description: req.body.description,
           user_id: req.session.user_id
       }
       );
+      console.log("New Post Created");
       console.log(newPost);
       res.status(200).json(newPost);
   } catch (err) {
