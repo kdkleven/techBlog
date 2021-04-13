@@ -39,10 +39,10 @@ router.get('/post/:id', async (req, res) => {
       ],
     });
 
-    const post = postData.get({ plain: true });
+    const posts = postData.get({ plain: true });
 
     res.render('post', {
-      ...post,
+      posts,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -62,8 +62,8 @@ router.get('/myPosts', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     res.render('myPosts', {
-      ...user,
-      logged_in: true
+      user,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);

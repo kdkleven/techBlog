@@ -1,7 +1,8 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
-    <p class="card-description">{{description}}<span class="card-author" style="float: right">Created by {{name}} on {{format_date createdAt}}</span></p>
+    <p class="card-description">{{description}}<span class="card-author" style="float: right">Created by {{name}} on
+        {{format_date createdAt}}</span></p>
   </div>
 </div>
 
@@ -24,9 +25,10 @@
 </div>
 {{/if}}
 
-<h5>Comments:</h5>
-  {{#each comments}}
-    {{> commentDisplay}}
-  {{/each}}
+
+{{#each comments}}
+  {{> commentDisplay}}
+{{/each}}
+
 </div>
 <script src="/js/comment.js"></script>

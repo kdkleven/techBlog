@@ -17,7 +17,11 @@
 
   <body>
     <header>
+      {{#if logged_in}}
       <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        {{else}}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          {{/if}}
         <div class="container-fluid">
           <a class="navbar-brand" href="/">K-Tech Blog</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"

@@ -2,7 +2,7 @@
   <div class="col-auto">
     <h2>Hello, {{name}}!</h2>
     <p>Welcome to your home away from home, where you can create new, update existing, or delete obsolete posts.</p>
-    <a href="/api/post/create"><button class="btn btn-sm btn-dark" id="btn-create-post">Create Post</button></a>
+    <a href="/api/post/createForm"><button class="btn btn-sm btn-dark" id="btn-create-post">Create Post</button></a>
   </div>
 </div>
 <hr>
@@ -22,7 +22,7 @@
           <p class="card-description">{{description}}</p>
           <p class="card-author">Created by {{name}} on {{format_date createdAt}}</p>
           <div class="col-md-4">
-            <button class="btn btn-sm btn-dark" data-id="{{post.id}}">Edit</button>
+            <a href="/api/post/editPost"><button class="btn btn-sm btn-dark" data-id="{{post.id}}" id="editPost">Edit</button></a>
         </div>
         </div>
       </div>

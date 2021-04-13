@@ -4,7 +4,7 @@ const newFormHandler = async (event) => {
   const title = document.querySelector('#post-title').value.trim();
   const description = document.querySelector('#post-description').value.trim();
 
-  if (name && needed_funding && description) {
+  if (title) {
     const response = await fetch('/api/post', {
       method: 'POST',
       body: JSON.stringify({ title, description }),
@@ -21,16 +21,16 @@ const newFormHandler = async (event) => {
   }
 };
 
-const deleteButtonHandler = async (event) => {
+const editHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
     const response = await fetch(`/api/post/${id}`, {
-      method: 'DELETE',
+      method: 'PUT',
     });
 
     if (response.ok) {
-      document.location.replace('/myPosts');
+      document.location.replace('/editPost');
     } else {
       alert('Failed to delete post');
     }
@@ -42,5 +42,5 @@ document
   .addEventListener('submit', newFormHandler);
 
 document
-  .querySelector('.post-list')
-  .addEventListener('click', deleteButtonHandler);
+  .querySelector('#editPost')
+  .addEventListener('click', editHandler);

@@ -12,13 +12,13 @@
         {{!-- change content --}}
         <div class="form-group">
             <label for="changeContent">Change Content</label>
-            <textarea class="form-control" id="changeContent" rows="3">{{post.content}}</textarea>
+            <textarea class="form-control" id="changeDescription" rows="3">{{post.content}}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary pageBtn" id="update">Update Post</button>
-        <button type="submit" class="btn btn-primary delete pageBtn">Delete Post</button>
+        <button type="submit" class="btn btn-primary pageBtn" id="uPost">Update Post</button>
+        <button type="submit" class="btn btn-primary delete pageBtn" id="dPost">Delete Post</button>
         <br>
     </form>
 </div>
 
 {{!-- javascript connection --}}
-<script src="/js/updatedelete.js"></script>
+<script src="/js/editPost.js"></script>

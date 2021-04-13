@@ -2,22 +2,8 @@ const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//POST create post
-router.get('/create', withAuth, async (req, res) => {
-  try {
-    const newPost = await Post.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newPost);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 //CREATE new post
-router.post('/create', withAuth, async (req, res) => {
+router.post('/createPost', withAuth, async (req, res) => {
   console.log("I'M HERE TO CREATE A POST");
   try {
       const newPost = await Post.create(
@@ -25,11 +11,10 @@ router.post('/create', withAuth, async (req, res) => {
           title: req.body.title,
           description: req.body.description,
           user_id: req.session.user_id
-      }
-      );
+      });
+      res.status(200).json(newPost);
       console.log("New Post Created");
       console.log(newPost);
-      res.status(200).json(newPost);
   } catch (err) {
       res.status(500).json(err);
   }
@@ -37,14 +22,24 @@ router.post('/create', withAuth, async (req, res) => {
 
 
 //Render create post page
-router.get('/create', (req, res) => {
+router.get('/createForm', withAuth, (req, res) => {
+  console.log("You've reached /createForm");
   res.render('createPost', {
-      loggedIn: req.session.logged_in
-  });
+    logged_in: req.session.logged_in
+  })
 });
 
+//Render edit post page
+router.get('/editPost', withAuth, (req, res) => {
+  console.log("You've reached /editPost");
+  res.render('editPost', {
+    logged_in: req.session.logged_in
+  })
+});
+
+
 //get post by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -68,7 +63,7 @@ router.get('/:id', async (req, res) => {
 
     res.render('post', {
       ...posts,
-      loggedIn: req.session.logged_in
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -117,12 +112,8 @@ router.put('/:id', async (req, res) => {
 });
 
 //POST create a comment
-router.post('/:id/comment', async (req, res) => {
+router.post('/:id/comment', withAuth, async (req, res) => {
   try {
-    console.log("Post route try");
-    console.log(req.body.content);
-    console.log(req.body.post_id);
-    
       const newComment = await Comment.create({
           content: req.body.content,
           post_id: req.body.post_id,
