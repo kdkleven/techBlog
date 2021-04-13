@@ -6,6 +6,10 @@
   </div>
 </div>
 
+{{#each comments}}
+  {{> commentDisplay}}
+{{/each}}
+
 {{#if logged_in}}
 <div class="container mt-5">
   <div class="d-flex row">
@@ -25,10 +29,6 @@
 </div>
 {{/if}}
 
-
-{{#each comments}}
-  {{> commentDisplay}}
-{{/each}}
 
 </div>
 <script src="/js/comment.js"></script>

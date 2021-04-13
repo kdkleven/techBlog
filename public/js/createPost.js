@@ -7,21 +7,21 @@ const newPostHandler = async (event) => {
     const description = document.querySelector('#post-desc').value.trim();
   
     console.log(title);
+    console.log(description);
   // fetch
+  if(title) {
       const response = await fetch(`/api/post/createPost`, {
         method: 'POST',
-        body: JSON.stringify({
-          title, description
-        }),
+        body: JSON.stringify({ title: title, description: description }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace("/myPosts");
+        document.location.replace('/myPosts');
       } else {
         alert(response.statusText);
       }
-    
+    }
   };
   
   //on click event for new post

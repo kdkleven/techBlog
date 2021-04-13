@@ -5,19 +5,22 @@ const withAuth = require('../../utils/auth');
 //CREATE new post
 router.post('/createPost', withAuth, async (req, res) => {
   console.log("I'M HERE TO CREATE A POST");
-  try {
-      const newPost = await Post.create(
-          {
-          title: req.body.title,
-          description: req.body.description,
-          user_id: req.session.user_id
-      });
-      res.status(200).json(newPost);
-      console.log("New Post Created");
-      console.log(newPost);
-  } catch (err) {
-      res.status(500).json(err);
-  }
+  console.log(req.body.title);
+  console.log(req.body.description);
+  // console.log(req.session.user_id);
+  // try {
+  //     const newPost = await Post.create(
+  //         {
+  //         title: req.body.title,
+  //         description: req.body.description,
+  //         user_id: req.session.user_id
+  //     });
+  //     res.status(200).json(newPost);
+  //     console.log("New Post Created");
+  //     console.log(newPost);
+  // } catch (err) {
+  //     res.status(500).json(err);
+  // }
 });
 
 
@@ -26,7 +29,7 @@ router.get('/createForm', withAuth, (req, res) => {
   console.log("You've reached /createForm");
   res.render('createPost', {
     logged_in: req.session.logged_in
-  })
+  });
 });
 
 //Render edit post page
@@ -34,7 +37,7 @@ router.get('/editPost', withAuth, (req, res) => {
   console.log("You've reached /editPost");
   res.render('editPost', {
     logged_in: req.session.logged_in
-  })
+  });
 });
 
 

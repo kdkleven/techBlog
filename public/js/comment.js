@@ -18,19 +18,18 @@ const newCommentHandler = async function (event) {
           'Content-Type': 'application/json',
         }
       });
-      console.log(response)
+      console.log(response);
   
       if (response.ok) {
-      
         document.location.replace(`/api/post/${post_id}`);
       } else {
         alert('Failed to create a new comment');
       }
     }
-  }
+  };
   
   //onclick for comment button
   document
     .querySelector('#commentBtn')
-    .addEventListener('click', newCommentHandler)
+    .addEventListener('click', newCommentHandler);
   
