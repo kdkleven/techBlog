@@ -2,6 +2,18 @@ const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//Render create post page
+router.get('/createForm', withAuth, (req, res) => {
+  console.log("You've reached /createForm");
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+    return;
+  }
+  res.render('createPost', {
+    logged_in: req.session.logged_in
+  });
+});
+
 //CREATE new post
 router.post('/createPost', withAuth, async (req, res) => {
   try {
@@ -19,22 +31,12 @@ router.post('/createPost', withAuth, async (req, res) => {
   }
 });
 
-
-//Render create post page
-router.get('/createForm', withAuth, (req, res) => {
-  console.log("You've reached /createForm");
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
-  res.render('createPost', {
-    logged_in: req.session.logged_in
-  });
-});
-
 //Render edit post page
 router.get('/editPost', withAuth, (req, res) => {
   console.log("You've reached /editPost");
+  try {
+    const postData = await Post.findBy
+  }
   res.render('editPost', {
     logged_in: req.session.logged_in
   });

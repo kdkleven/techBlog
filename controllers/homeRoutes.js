@@ -53,6 +53,7 @@ router.get('/post/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/myPosts', withAuth, async (req, res) => {
   const user = req.session.user_id;
+  console.log("This is REQ.SESSION", req.session);
   try {
       const postData = await Post.findAll({
           include: [
@@ -74,11 +75,12 @@ router.get('/myPosts', withAuth, async (req, res) => {
           return;
       }
       const posts = postData.map((post) => post.get({ plain: true }));
-      console.log(posts);
+      console.log("POSTS",posts[0].user.name);
+      const name = posts[0].user.name;
       res.render('myPosts', {
           posts,
           logged_in: req.session.logged_in,
-          name: req.session.name
+          name
       });
 
   } catch (err) {

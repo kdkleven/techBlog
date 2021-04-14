@@ -21,16 +21,16 @@
     {{#each posts as |post| }}
       <div class="card cardLink">
         <div class="card-body">
-          <a href="/post/{{post.id}}">
+          <a href="/api/post/{{post.id}}">
             <h5 class="card-title">{{title}}</h5>
           </a>
           {{!-- Split into partial? --}}
           <p class="card-description">{{description}}</p>
           <p class="card-author" style="float: right">Created by {{name}} on {{format_date createdAt}}</p>
-          <div class="col-md-4">
+          {{!-- <div class="col-md-4">
             <a href="/api/post/editPost"><button class="btn btn-sm btn-dark" data-id="{{post.id}}"
                 id="editPost">Edit</button></a>
-          </div>
+          </div> --}}
         </div>
       </div>
     {{/each}}

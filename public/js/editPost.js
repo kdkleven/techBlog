@@ -6,7 +6,6 @@ const updateFormHandler = async (event) => {
     // variables
     const title = document.querySelector('#changeTitle').value.trim();
     const description = document.querySelector('#changeContent').value.trim();
-  
     const post_id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
