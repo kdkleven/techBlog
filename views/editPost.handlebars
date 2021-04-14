@@ -1,4 +1,5 @@
-
+<a href="/myPosts"><button type="button" class="btn btn-outline-danger btn-sm">Back</button></a>
+<hr>
 {{!-- main container for page --}}
 <div class="container">
     <form>
@@ -6,16 +7,16 @@
         <h2>{{post.title}}</h2>
         {{!-- change title --}}
         <div class="form-group">
-            <label for="changeTitle">Change Title</label>
+            <h4>Title</h4>
             <input type="text" class="form-control" id="changeTitle" value="{{post.title}}">
         </div>
         {{!-- change content --}}
         <div class="form-group">
-            <label for="changeContent">Change Content</label>
+            <h4>Description</h4>
             <textarea class="form-control" id="changeDescription" rows="3">{{post.content}}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary pageBtn" id="uPost">Update Post</button>
-        <button type="submit" class="btn btn-primary delete pageBtn" id="dPost">Delete Post</button>
+        <button type="submit" class="btn btn-danger pageBtn" id="uPost">Update Post</button>
+        <button type="submit" class="btn btn-danger pageBtn" id="dPost">Delete Post</button>
         <br>
     </form>
 </div>

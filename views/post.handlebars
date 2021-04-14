@@ -1,3 +1,6 @@
+<a href="/"><button type="button" class="btn btn-outline-danger btn-sm">Back</button></a>
+<hr>
+<h4>Post</h4>
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
@@ -5,28 +8,20 @@
         {{format_date createdAt}}</span></p>
   </div>
 </div>
-
+<h4>Comments</h4>
 {{#each comments}}
   {{> commentDisplay}}
 {{/each}}
 
 {{#if logged_in}}
-<div class="container mt-5">
-  <div class="d-flex row">
-    <div class="col-md-8">
-      <div class="d-flex flex-column comment-section">
-        <div class="p-2">
-          <div class="d-flex flex-row align-items-start">
-            <textarea class="form-control textarea" id="comment-content" data-id={{id}}></textarea>
-          </div>
-          <div class="mt-2 text-right">
-            <button class="btn btn-danger btn-sm shadow-none" id="commentBtn" type="button">Post comment</button>
-          </div>
-        </div>
-      </div>
+  <div class="container mt-5">
+    <div class="d-flex flex-row align-items-start">
+      <textarea class="form-control textarea" id="comment-content" data-id={{id}} placeholder="Leave a comment..."></textarea>
+    </div>
+    <div class="mt-2 text-right">
+      <button class="btn btn-danger btn-sm shadow-none" id="commentBtn" type="button">Submit</button>
     </div>
   </div>
-</div>
 {{/if}}
 
 

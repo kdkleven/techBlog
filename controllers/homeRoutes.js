@@ -52,21 +52,37 @@ router.get('/post/:id', async (req, res) => {
 
 // Use withAuth middleware to prevent access to route
 router.get('/myPosts', withAuth, async (req, res) => {
+  const user = req.session.user_id;
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Post }],
-    });
+      const postData = await Post.findAll({
+          include: [
+              {
+                  model: User,
+                  attributes: ["name"]
+              },
+          ],
+          attributes: ["id", "title", "description", "createdAt", "updatedAt" ],
+          where: {
+              user_id: user,
+          },
+      });
 
-    const user = userData.get({ plain: true });
+      if (!postData) {
+          res.status(404).json({
+              message: "No post found with this id"
+          });
+          return;
+      }
+      const posts = postData.map((post) => post.get({ plain: true }));
+      console.log(posts);
+      res.render('myPosts', {
+          posts,
+          logged_in: req.session.logged_in,
+          name: req.session.name
+      });
 
-    res.render('myPosts', {
-      user,
-      logged_in: req.session.logged_in
-    });
   } catch (err) {
-    res.status(500).json(err);
+      res.status(500).json(err);
   }
 });
 
@@ -76,7 +92,6 @@ router.get('/login', (req, res) => {
     res.redirect('/myPosts');
     return;
   }
-
   res.render('login');
 });
 
