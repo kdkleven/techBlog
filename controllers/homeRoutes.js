@@ -51,7 +51,7 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/myPosts', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   const user = req.session.user_id;
   console.log("This is REQ.SESSION", req.session);
   try {
@@ -75,9 +75,8 @@ router.get('/myPosts', withAuth, async (req, res) => {
           return;
       }
       const posts = postData.map((post) => post.get({ plain: true }));
-      console.log("POSTS",posts[0].user.name);
       const name = posts[0].user.name;
-      res.render('myPosts', {
+      res.render('dashboard', {
           posts,
           logged_in: req.session.logged_in,
           name
@@ -91,7 +90,7 @@ router.get('/myPosts', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/myPosts');
+    res.redirect('/dashboard');
     return;
   }
   res.render('login');

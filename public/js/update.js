@@ -19,7 +19,7 @@ const updateFormHandler = async (event) => {
     });
   
     if (response.ok) {
-      document.location.replace("/myPosts");
+      document.location.replace("/dashboard");
     } else {
       alert(response.statusText);
     }
@@ -43,7 +43,7 @@ const updateFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace("/myPosts");
+        document.location.replace("/dashboard");
       } else {
         alert(response.statusText);
       }

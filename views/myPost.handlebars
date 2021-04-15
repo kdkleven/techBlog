@@ -1,4 +1,4 @@
-<a href="/"><button type="button" class="btn btn-outline-danger btn-sm">Back</button></a>
+<a href="/dashboard"><button type="button" class="btn btn-outline-danger btn-sm">Back</button></a>
 <hr>
 <h4>Post</h4>
 <div class="card">
@@ -13,7 +13,7 @@
   {{> commentDisplay}}
 {{/each}}
 
-{{#if logged_in}}
+{{!-- {{#if logged_in}}
   <div class="container mt-5">
     <div class="d-flex flex-row align-items-start">
       <textarea class="form-control textarea" id="comment-content" data-id={{id}} placeholder="Leave a comment..."></textarea>
@@ -22,7 +22,7 @@
       <button class="btn btn-danger btn-sm shadow-none" id="commentBtn" type="button">Submit</button>
     </div>
   </div>
-{{/if}}
+{{/if}} --}}
 
 
 </div>

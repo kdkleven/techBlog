@@ -1,19 +1,19 @@
-<a href="/myPosts"><button type="button" class="btn btn-outline-danger btn-sm">Back</button></a>
+<a href="/dashboard"><button type="button" class="btn btn-outline-danger btn-sm">Back</button></a>
 <hr>
 {{!-- main container for page --}}
 <div class="container">
     <form>
         {{!-- title of post --}}
-        <h2>{{post.title}}</h2>
+        <h2>{{postText.title}}</h2>
         {{!-- change title --}}
         <div class="form-group">
             <h4>Title</h4>
-            <input type="text" class="form-control" id="changeTitle" value="{{post.title}}">
+            <input type="text" class="form-control" id="changeTitle" value="{{postText.title}}">
         </div>
         {{!-- change content --}}
         <div class="form-group">
             <h4>Description</h4>
-            <textarea class="form-control" id="changeDescription" rows="3">{{post.description}}</textarea>
+            <textarea class="form-control" id="changeDescription" rows="3">{{postText.description}}</textarea>
         </div>
         <button type="submit" class="btn btn-danger pageBtn" id="uPost">Update Post</button>
         <button type="submit" class="btn btn-danger pageBtn" id="dPost">Delete Post</button>
@@ -22,4 +22,4 @@
 </div>
 
 {{!-- javascript connection --}}
-<script src="/js/editPost.js"></script>
+<script src="/js/update.js"></script>

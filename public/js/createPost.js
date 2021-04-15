@@ -17,7 +17,7 @@ const newPostHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/myPosts');
+        document.location.replace('/dashboard');
         
       } else {
         alert(response.statusText);
