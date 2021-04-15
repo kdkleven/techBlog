@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-auto">
-    {{#if name}}
-    <h2>Hello, {{name}}!</h2>
+    {{#if post.user.name}}
+    <h2>Hello, {{post.user.name}}!</h2>
     {{else}}
-    <h2>Howdy,</h2>
+    <h2>Howdy stranger,</h2>
     {{/if}}
-    <p>Welcome to your home away from home, where you can create new, update existing, or delete obsolete posts.</p>
-    <a href="/api/post/createForm">
-      <button class="btn btn-sm btn-dark" id="btn-create-post">Create Post</button>
+    <p>Welcome to your home away from home where you can create, read, update, or delete your posts.</p>
+    <a href="/api/post/create">
+      <button class="btn btn-md btn-dark" id="btn-create-post">Create Post</button>
     </a>
   </div>
 </div>
@@ -15,20 +15,25 @@
 <div>
   <h3>My Posts</h3>
 </div>
-{{#if posts.length}}
+{{#if posts}}
   <div class="col-md-12 post-list">
     <!-- Loop over each object in the posts array -->
     {{#each posts as |post| }}
       <div class="card cardLink">
         <div class="card-body">
           <a href="/api/post/{{post.id}}">
-            <h5 class="card-title">{{title}}</h5>
+            <h5 class="card-title">{{post.title}}</h5>
           </a>
           {{!-- Split into partial? --}}
-          <p class="card-description">{{description}}</p>
-          <p class="card-author" style="float: right">Created by {{name}} on {{format_date createdAt}}</p>
+          <p class="card-description">{{post.description}}</p>
+          <span class="card-author">Created by {{post.user.name}} on
+        {{format_date createdAt}}</span>
         </div>
       </div>
     {{/each}}
+  </div>
+  {{else}}
+  <div>
+    <h5>You have no posts!</h5>
   </div>
 {{/if}}

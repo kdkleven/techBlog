@@ -43,3 +43,30 @@ footer {
 .form-control {
   margin: 5px 0px 5px 0px;
 }
+
+.material-icons { 
+  font-size: 36px;
+  padding-left: 10px;
+  padding-right: 10px; 
+}
+
+.navbar-brand {
+  font-size: 24px;
+  float: right;
+}
+
+.navbar-inner {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 22px;
+}
+
+.card-description {
+  font-size: 20px;
+}
+
+.card-author {
+  font-size: 16px;
+}

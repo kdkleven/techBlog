@@ -5,16 +5,13 @@
 <h3>Posts</h3>
 <!-- Loop over each object in the posts array -->
 {{#each posts as |post| }}
-
   <div class="card cardLink">
     <div class="card-body">
       <a href="api/post/{{post.id}}">
-        <h5 class="card-title" style="display: inline-block">{{title}}</h5><span class="card-author"
-          style="float: right">Created by {{user.name}} on {{format_date createdAt}}</span>
+        <h5 class="card-title" style="display: inline-block">{{title}}</h5>
         <p class="card-description">{{description}}</p>
-
+        <span class="card-author" style="text-align: right; display: flex">Created by {{post.user.name}} on {{format_date createdAt}}</span>
       </a>
     </div>
   </div>
-
 {{/each}}

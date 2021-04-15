@@ -10,7 +10,7 @@ const newPostHandler = async (event) => {
     console.log(description);
   // fetch
   if(title) {
-      const response = await fetch(`/api/post/createPost`, {
+      const response = await fetch(`/api/post/create`, {
         method: 'POST',
         body: JSON.stringify({ title: title, description: description }),
         headers: { 'Content-Type': 'application/json' },

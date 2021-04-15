@@ -1,17 +1,24 @@
-<a href="/"><button type="button" class="btn btn-outline-danger btn-sm">Back</button></a>
-<hr>
 <h4>Post</h4>
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
-    <p class="card-description">{{description}}<span class="card-author" style="float: right">Created by {{name}} on
-        {{format_date createdAt}}</span></p>
-        {{#if userPost}}
-<div>
-  <a href="/api/post/update/{{id}}"><button type="submit" class="btn btn-dark pageBtn" style="display: inline-block" id="editPostForm">Edit Post</button></a>
-</div>
-{{/if}}
+    <p class="card-description">{{description}}</p>
+    <span class="card-author">Created by {{user.name}} on
+      {{format_date createdAt}}</span>
+      {{#if userPost}}
+      <div class="cta" style="float: right; display: flex-block">
+        <a href="/api/post/update/{{id}}">
+          <button type="submit" class="btn btn-dark pageBtn" style="display: inline-block">
+            Edit Post
+          </button>
+        </a>
+          <button type="submit" class="btn btn-dark pageBtn" style="display: inline-block" id="dPost">
+            Delete Post
+          </button>
+      </div>
+    {{/if}}
   </div>
+  
 </div>
 <br>
 <h4>Comments</h4>
@@ -21,14 +28,16 @@
 <hr>
 {{#if logged_in}}
   {{!-- <div class="container mt-5"> --}}
-    <div class="flex-row">
-      <textarea class="form-control textarea" id="comment-content" data-id={{id}} placeholder="Leave a comment..."></textarea>
-    </div>
-    <div class="mt-2 text-right">
-      <button class="btn btn-danger btn-sm shadow-none" id="commentBtn" type="button">Submit</button>
-    </div>
+  <div class="flex-row">
+    <textarea class="form-control textarea" id="comment-content" data-id={{id}}
+      placeholder="Leave a comment..."></textarea>
+  </div>
+  <div class="mt-2 text-right">
+    <button class="btn btn-danger btn-sm shadow-none" id="commentBtn" type="button">Submit</button>
+  </div>
   {{!-- </div> --}}
 {{/if}}
 
 </div>
+<script src="/js/post.js"></script>
 <script src="/js/comment.js"></script>
