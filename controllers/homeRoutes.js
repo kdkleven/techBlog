@@ -63,13 +63,16 @@ router.get('/post/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   const user = req.session.user_id;
-  console.log(req.session);
   try {
+    const userData = await User.findOne({ where: { id: req.session.user_id }});
+    
+    const userName = userData.get({ plain: true });
+   
     const postData = await Post.findAll({
       include: [
         {
           model: User,
-          attributes: ["name"]
+          attributes: ["id", "name"]
         },
       ],
       attributes: ["id", "title", "description", "createdAt", "updatedAt"],
@@ -78,26 +81,19 @@ router.get('/dashboard', withAuth, async (req, res) => {
       },
     });
     
-    if (!postData) {
-      console.log("no post data!!!!!!");
-    
+    if (!postData) {   
       res.status(404).json({
         message: "No posts found",
       });
-      
-      console.log("status 404");
       return;
     }
-    else {
       const posts = postData.map((post) => post.get({ plain: true }));
-      console.log("POSTS = ", posts);
-      //const name = posts[0].user.name;
-      
+    
       res.render('dashboard', {
         posts,
-        logged_in: req.session.logged_in
+        logged_in: req.session.logged_in,
+        userName
       });
-    }
   }
    catch (err) {
   res.status(500).json(err);

@@ -90,7 +90,6 @@ router.get('/:id', withAuth, async (req, res) => {
 
 //GET update post page
 router.get('/update/:id', withAuth, async (req, res) => {
-  console.log('\n/UPDATE\n');
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -101,7 +100,6 @@ router.get('/update/:id', withAuth, async (req, res) => {
       ],
     });
     const posts = postData.get({ plain: true });
-    console.log("\nposts\n", posts);
     res
       .render(
         'update',
@@ -126,7 +124,6 @@ router.put('/:id', async (req, res) => {
         id: req.body.post_id,
       }
     });
-    console.log("\nUPDATE POST\n", postData);
     if (!postData) {
       res.status(404).json({ message: "No posts found with that ID!" });
     }

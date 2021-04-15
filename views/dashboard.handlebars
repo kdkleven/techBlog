@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-auto">
-    {{#if post.user.name}}
-    <h2>Hello, {{post.user.name}}!</h2>
+    {{#if userName.name}}
+    <h2>Welcome, {{userName.name}}!</h2>
     {{else}}
-    <h2>Howdy stranger,</h2>
+    <h2>Hey you! You're not supposed to be here without logging in!!! The police are on their way... enjoy the smell of the gulag >:(</h2>
     {{/if}}
     <p>Welcome to your home away from home where you can create, read, update, or delete your posts.</p>
     <a href="/api/post/create">
@@ -34,6 +34,6 @@
   </div>
   {{else}}
   <div>
-    <h5>You have no posts!</h5>
+    <p>There's nothing here yet. Create a post to share your thoughts with the world!</p>
   </div>
 {{/if}}

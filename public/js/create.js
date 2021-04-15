@@ -5,9 +5,7 @@ const newPostHandler = async (event) => {
     // variables
     const title = document.querySelector('#post-title').value.trim();
     const description = document.querySelector('#post-desc').value.trim();
-  
-    console.log(title);
-    console.log(description);
+
   // fetch
   if(title) {
       const response = await fetch(`/api/post/create`, {
