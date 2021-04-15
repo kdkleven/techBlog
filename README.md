@@ -25,6 +25,8 @@ Navigate to https://kk-tech-blog.herokuapp.com/
 
 View global posts on the home page. Login or signup to gain the ability to leave comments. Once logged in, navigate to the dashboard to view your posts, or create, update and delete posts.
 
+## Images
+<img src=".\14-MVC\Assets\screenshot.JPG"></img>
 
 ## License
   
